@@ -12,16 +12,10 @@ const mailgun =
   });
 
 const nodeMailerConfig = {
-  host: getConfig("EMAIL_HOST"),
-  port: getConfig("EMAIL_HOST_PORT"),
-  secure:
-    typeof process.env.EMAIL_HOST_SECURE !== "undefined"
-      ? getConfig("EMAIL_HOST_SECURE", null, { truthy: 1 })
-      : true,
-  auth: {
-    user: getConfig("EMAIL_HOST_USER"),
-    pass: getConfig("EMAIL_HOST_PASSWORD")
-  }
+  host: "localhost",
+  port: 25,
+  secure: false,
+  ignoreTLS: true
 };
 
 const sender =
