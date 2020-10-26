@@ -64,7 +64,6 @@ class TexterTodoList extends React.Component {
     if (
       this.props.data &&
       this.props.data.user &&
-      this.props.data.user.cacheable &&
       !this.state.polling
     ) {
       const self = this;
