@@ -825,8 +825,10 @@ export async function exportCampaign(job) {
     (process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY)
   ) {
     try {
+      const s3ep = new AWS.Endpoint(process.env.AWS_S3_ENDPOINT);
       const s3bucket = new AWS.S3({
-        params: { Bucket: process.env.AWS_S3_BUCKET_NAME }
+        params: { Bucket: process.env.AWS_S3_BUCKET_NAME },
+        endpoint: s3ep
       });
       const campaignTitle = campaign.title
         .replace(/ /g, "_")
