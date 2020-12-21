@@ -71,7 +71,7 @@ class TexterTodoList extends React.Component {
       this.setState({
         polling: setInterval(() => {
           self.props.data.refetch();
-        }, 5000)
+        }, 15000)
       });
     }
   }
