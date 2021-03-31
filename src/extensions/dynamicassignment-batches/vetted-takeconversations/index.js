@@ -38,7 +38,7 @@ export const requestNewBatchCount = async ({
         campaign_id: campaign.id,
         is_opted_out: false
       })
-      .whereNotIn("message_status", ["needsMessage", "messaged"])
+      .whereIn("message_status", ["needsResponse"])
       .whereNull("assignment_id")
   );
   return availableCount;
@@ -54,7 +54,7 @@ export const selectContacts = async (
       is_opted_out: false,
       campaign_id: campaign.id
     })
-    .whereNotIn("message_status", ["needsMessage", "messaged"])
+    .whereIn("message_status", ["needsResponse"])
     .whereNull("assignment_id"),
   hasCurrentQuery: r
     .knex("campaign_contact")
