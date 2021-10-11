@@ -13,7 +13,7 @@ ENV NODE_ENV=production \
 COPY . /spoke
 WORKDIR /spoke
 RUN yarn install --ignore-scripts --non-interactive --frozen-lockfile && \
-    yarn run prod-build && \
+    NODE_OPTIONS=--max-old-space-size=4096 yarn run prod-build && \
     rm -rf node_modules && \
     yarn install --production --ignore-scripts
 
