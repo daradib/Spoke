@@ -862,7 +862,8 @@ export async function exportCampaign(job) {
       const s3ep = new AWS.Endpoint(process.env.AWS_S3_ENDPOINT);
       const s3bucket = new AWS.S3({
         params: { Bucket: process.env.AWS_S3_BUCKET_NAME },
-        endpoint: s3ep
+        endpoint: s3ep,
+        signatureVersion: 'v4'
       });
       const campaignTitle = campaign.title
         .replace(/ /g, "_")
