@@ -888,18 +888,6 @@ export async function exportCampaign(job) {
       );
       exportResults.campaignExportUrl = campaignExportUrl;
       exportResults.campaignMessagesExportUrl = campaignMessagesExportUrl;
-
-      await sendEmail({
-        to: user.email,
-        subject: `Export ready for ${campaign.title}`,
-        text: `Your Spoke exports are ready! These URLs will be valid for 24 hours.
-        Campaign export: ${campaignExportUrl}
-        Message export: ${campaignMessagesExportUrl}`
-      }).catch(err => {
-        log.error(err);
-        log.info(`Campaign Export URL - ${campaignExportUrl}`);
-        log.info(`Campaign Messages Export URL - ${campaignMessagesExportUrl}`);
-      });
       log.info(`Successfully exported ${id}`);
     } catch (err) {
       log.error(err);
