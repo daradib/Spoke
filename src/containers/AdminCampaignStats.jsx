@@ -427,7 +427,7 @@ class AdminCampaignStats extends React.Component {
               Export started -
               {(this.props.organizationData &&
                 this.props.organizationData.organization.emailEnabled) ?
-                " we'll e-mail you when it's done. " :
+                " monkeys are hoarding data. " :
               (campaign.cacheable && (
                 <span>
                   <Link
