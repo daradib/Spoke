@@ -944,12 +944,6 @@ export async function exportCampaign(job) {
     } catch (err) {
       log.error(err);
       exportResults.error = err.message;
-      await sendEmail({
-        to: user.email,
-        subject: `Export failed for ${campaign.title}`,
-        text: `Your Spoke exports failed... please try again later.
-        Error: ${err.message}`
-      });
     }
   } else if (process.env.NODE_ENV !== "production") {
     const contactsFile = `./campaign-export-${campaign.id}.csv`;
