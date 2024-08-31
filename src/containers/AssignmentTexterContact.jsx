@@ -388,7 +388,7 @@ export class AssignmentTexterContact extends React.Component {
   };
 
   bulkSendMessages = async assignmentId => {
-    return await this.props.mutations.bulkSendMessages(assignmentId);
+    return await this.props.mutations.bulkSendMessages(Number(assignmentId));
   };
 
   render() {
