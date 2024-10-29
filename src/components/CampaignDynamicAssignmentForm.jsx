@@ -170,7 +170,7 @@ class CampaignDynamicAssignmentForm extends React.Component {
               </ul>
 
               <Form.Field
-                as={GSTextField}
+                as={GSIntegerField}
                 fullWidth
                 name="replyBatchSize"
                 type="number"
