@@ -39,8 +39,7 @@ const messageStatusKey = id =>
 
 // allows a lookup of contact_id, assignment_id, and timezone_offset by cell+messageservice_sid
 const cellTargetKey = (cell, messageServiceOrUserNumber) =>
-  `${process.env.CACHE_PREFIX || ""}cell-${cell}-${messageServiceOrUserNumber ||
-    "x"}`;
+  `${process.env.CACHE_PREFIX || ""}cell-${cell}-x`;
 
 // HASH<campaignId> assignment_id and user_id (sometimes) of assignment
 // This allows us to clear assignment cache all at once for a campaign
@@ -404,16 +403,6 @@ const campaignContactCache = {
       .orderBy("message.created_at", "desc")
       .limit(1);
 
-    if (messageServiceSid) {
-      messageQuery = messageQuery.where(
-        "messageservice_sid",
-        messageServiceSid
-      );
-    } else {
-      messageQuery = messageQuery
-        .whereNull("messageservice_sid")
-        .where("user_number", userNumber);
-    }
     // we get the campaign_id so we can cache errorCount and needsResponseCount
     messageQuery = messageQuery
       .join(
